@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Link } from "gatsby";
-import { AppWrapper } from "../components/styled/homepage.styled";
-import { HeaderNavBar } from "../components/header-navbar";
+import { Router, Redirect } from "@reach/router";
+import Home from "./home";
 
-const IndexPage = () => (
-  <AppWrapper>
-    <HeaderNavBar />
-  </AppWrapper>
-);
+const IndexPage = () => {
+  return (
+    <Router>
+      <Redirect from="/" to="home" noThrow />
+      <Home path="/home" />
+    </Router>
+  );
+};
 
 export default IndexPage;
