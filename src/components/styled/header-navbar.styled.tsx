@@ -1,43 +1,20 @@
 import styled from "styled-components";
 
-export const HeaderNavWrapper = styled.div<{ yAxis: number }>`
+export const HeaderNavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: linear-gradient(
-    -60deg,
-    rgb(49 24 250 / 30%),
-    rgb(205 200 251 / 60%)
-  );
   color: white;
   transition: all 0.5s linear-out;
   &.unset {
-    padding: ${(props) =>
-      `${getTopBottomPadding(props.yAxis)}px 30px 20px 30px`};
     justify-content: center;
   }
   &.collapsed {
     position: fixed;
     top: 0;
     width: 100%;
-    background-image: ${(props) =>
-      `linear-gradient(-${getGradient(
-        props.yAxis
-      )}deg, rgb(49 24 250 / 30%),
-    rgb(205 200 251 / 60%))`};
-    padding: 30px 30px 20px 30px;
   }
 `;
-
-const getGradient = (y: number) => {
-  if (y < 400) 60;
-  return y;
-};
-
-const getTopBottomPadding = (y: number) => {
-  const newValue = 400 - y;
-  return newValue;
-};
 
 export const HeaderNavTitleWrapper = styled.div`
   display: flex;
