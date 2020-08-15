@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/page-2.tsx"],"names":["SecondPage"],"mappings":"6FAAA,uBAKeA,UAFI,kBAAM","file":"component---src-pages-page-2-tsx-cd08a281f00e607b0149.js","sourcesContent":["import * as React from \"react\";\nimport { Link } from \"gatsby\";\n\nconst SecondPage = () => <div>Second Page</div>;\n\nexport default SecondPage;\n"],"sourceRoot":""}
