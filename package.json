@@ -4,9 +4,6 @@
   "description": "portfolio",
   "version": "0.1.0",
   "author": "ronit oommen",
-  "publishConfig": {
-    "registry": "https://nexus.app-dev.alegion.com/repository/alegion-private/"
-  },
   "dependencies": {
     "@n8tb1t/use-scroll-position": "^1.0.43",
     "@reach/router": "^1.3.4",
