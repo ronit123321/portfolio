@@ -16,9 +16,8 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(yAxis)
+    console.log(yAxis);
     if (yAxis > 180 && !isCollapsed) {
-      console.log("gone quite down");
       setIsCollapsed(true);
     }
     if (yAxis === 0 && isCollapsed) {
@@ -27,8 +26,19 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
   }, [yAxis]);
 
   const getLinearGradient = () => {
-    return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 95%),
-    rgb(205 200 251 / 90%))`;
+    // translucent
+    if (yAxis < 75 && !isCollapsed) {
+      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 50%),
+    rgb(205 200 251 / 50%))`;
+    }
+    else if (yAxis < 75 && isCollapsed) {
+      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 80%),
+    rgb(205 200 251 / 80%))`;
+    } else {
+      //opaque
+      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 100%),
+    rgb(205 200 251 / 100%))`;
+    }
   };
 
   const getGradient = (y: number) => {
