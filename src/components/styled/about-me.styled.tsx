@@ -6,7 +6,7 @@ export const AboutMeWrapper = styled.div`
   padding: 56px 32px 32px 32px;
   flex-wrap: wrap;
   margin-right: 1em;
-
+  z-index: 99;
   img {
     max-height: 300px;
     border-radius: 20px;
