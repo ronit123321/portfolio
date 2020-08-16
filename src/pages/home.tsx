@@ -51,8 +51,8 @@ const Home: React.FC<any> = () => {
     <AppWrapper>
       <video id="bgvid" playsInline autoPlay muted loop>
         <source
-          //city bokeh
-          src="https://static.videezy.com/system/resources/previews/000/039/469/original/73_24_08_19.mp4"
+          //drive
+          src="https://static.videezy.com/system/resources/previews/000/011/012/original/LA_Traffic_Sunset_Blvd_1.mp4"
           type="video/webm"
         ></source>
       </video>
