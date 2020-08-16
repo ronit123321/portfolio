@@ -16,8 +16,7 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(yAxis);
-    if (yAxis > 180 && !isCollapsed) {
+    if (yAxis > 480 && !isCollapsed) {
       setIsCollapsed(true);
     }
     if (yAxis === 0 && isCollapsed) {
@@ -27,17 +26,17 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
 
   const getLinearGradient = () => {
     // translucent
-    if (yAxis < 75 && !isCollapsed) {
-      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 50%),
-    rgb(205 200 251 / 50%))`;
-    }
-    else if (yAxis < 75 && isCollapsed) {
-      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 80%),
-    rgb(205 200 251 / 80%))`;
+    if (yAxis < 760 && !isCollapsed) {
+      return "linear-gradient(0deg, rgb(76 79 90 / 53%) 4.26%, rgb(32 33 37 / 62%) 84.84%)";
+    } else if (yAxis < 750 && isCollapsed) {
+      return `linear-gradient(-${getGradient(
+        yAxis
+      )}deg, rgb(76 79 90 / 53%) 4.26%, rgb(32 33 37 / 62%) 84.84%)`;
     } else {
       //opaque
-      return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 100%),
-    rgb(205 200 251 / 100%))`;
+      return `linear-gradient(-${getGradient(
+        yAxis
+      )}deg, #4c4f5a 4.26%,#202125 84.84%)`;
     }
   };
 
@@ -52,8 +51,20 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
   };
 
   const getTopBottomPadding = (y: number) => {
-    const newValue = 400 - y;
+    const newValue = 800 - y;
     return newValue;
+  };
+
+  const getTitle = () => {
+    if (isCollapsed)
+      return (
+        <div className="tagTitle">
+          <p className="logoHighlight">{"<"} </p>
+          <p>Ronit</p>
+          <p className="logoHighlight">{"/>"}</p>
+        </div>
+      );
+    else return "Ronit Oommen";
   };
 
   return (
@@ -70,7 +81,7 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
           className={isCollapsed ? "collapsed" : ""}
           id="head-navbar-wrapper-title"
         >
-          Ronit Oommen
+          {getTitle()}
         </HeaderNavTitle>
         {!isCollapsed && (
           <HeaderNavTitleInfo id="head-navbar-wrapper-title">

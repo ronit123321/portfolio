@@ -49,13 +49,6 @@ const Home: React.FC<any> = () => {
 
   return (
     <AppWrapper>
-      <video id="bgvid" playsInline autoPlay muted loop>
-        <source
-          //drive
-          src="https://static.videezy.com/system/resources/previews/000/011/012/original/LA_Traffic_Sunset_Blvd_1.mp4"
-          type="video/webm"
-        ></source>
-      </video>
       <div
         style={{
           backgroundImage: `url(https://svgur.com/i/CPw.svg)`,

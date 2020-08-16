@@ -4,7 +4,7 @@ export const HeaderNavWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: white;
+  color: #1aa8e1;
   transition: all 1s linear;
   &.unset {
     justify-content: center;
@@ -24,8 +24,21 @@ export const HeaderNavTitle = styled.div`
   font-size: 48px;
   transition: all 0.5s linear;
   text-align: center;
+  color: #ffffff;
   &.collapsed {
     text-align: left;
+  }
+  .tagTitle {
+    display: flex;
+    flex-direction: row;
+    p {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      &.logoHighlight {
+        color: #4758fc;
+      }
+    }
   }
 `;
 

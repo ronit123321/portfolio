@@ -1,6 +1,7 @@
 import * as React from "react";
 import { AboutMeWrapper } from "../styled/about-me.styled";
 import * as Chance from "chance";
+import { DragItem } from "../drag-item";
 
 type HeaderNavBarProps = {
   yAxis: number;
@@ -10,35 +11,75 @@ type HeaderNavBarProps = {
 export const AboutMe: React.FC<HeaderNavBarProps> = ({ yAxis, headerRef }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
+  const [currentX, setCurrentX] = React.useState(0);
+
   React.useEffect(() => {
-    // if (yAxis > 180) {
-    //   setIsCollapsed(true);
-    // }
-    // if (yAxis < 180 && isCollapsed) {
-    //   setTimeout(() => {
-    //     setIsCollapsed(false);
-    //   }, 100);
-    // }
+    if (yAxis > 180 && !isCollapsed) {
+      setIsCollapsed(true);
+    }
+    if (yAxis === 0 && isCollapsed) {
+      setIsCollapsed(false);
+    }
   }, [yAxis]);
+
+  const getLeftStyle = () => {
+    const Nlimit = -400;
+    const Plimit = 400;
+    if (currentX <= Nlimit) {
+      return `calc( 48% + ${Nlimit}px )`;
+    } else {
+      if (currentX >= Plimit) {
+        return `calc( 48% + ${Plimit}px )`;
+      } else {
+        return `calc( 48% + ${currentX}px )`;
+      }
+    }
+  };
+
+  const getRightStyle = () => {
+    const Nlimit = -400;
+    const Plimit = 400;
+
+    if (currentX >= Plimit) {
+      console.log(`calc( 48% - ${currentX}px )`);
+      return `calc( 48% - ${Plimit}px )`;
+    } else {
+      if (currentX <= Nlimit) {
+        return `calc( 48% - ${Nlimit}px )`;
+      }
+      return `calc( 48% - ${currentX}px )`;
+    }
+  };
 
   return (
     <AboutMeWrapper className={isCollapsed ? "collapsed" : ""}>
-      <div className="one">
-        <img src={"https://cutecatsanddogs.com/wp-content/uploads/2014/10/funny-videos-funny-cats-funny-ca1.jpg"} />
-      </div>
-      <div className="two">
-        <img src={"https://i.redd.it/g3q78obsja121.jpg"} />
-      </div>
-
-      <div className="three">
-        <img src={"https://cat-world.com/wp-content/uploads/2017/03/domestic-shorthair30.jpg"} />
+      <div
+        style={{
+          width: getLeftStyle(),
+        }}
+        className="leftPanel"
+      >
+        Some Info
       </div>
 
-      <div className="two">
-        <img src={"https://townsquare.media/site/675/files/2019/08/67661039_2600194060216546_4230772670389551104_n-e1565265186272.jpg?w=1200&h=0&zc=1&s=0&a=t&q=89"} />
-      </div>
-      <div className="one">
-        <img src={"https://i1.wp.com/blackpinkupdate.com/wp-content/uploads/2020/01/3-BLACKPINK-Lisa-Cats-Luca-Baby-Sitting-Lily-Playing-Tissue-Paper.jpg?resize=576%2C1024&ssl=1"} />
+      <DragItem
+        id="drag"
+        onDrag={(deltaX: number, _deltaY: number, _initial: void) => {
+          setCurrentX(deltaX);
+        }}
+        onDragStart={() => {}}
+        onDragStop={() => {}}
+      >
+        <div className="dragline"></div>
+      </DragItem>
+
+      <div
+        style={{
+          width: getRightStyle(),
+        }}
+        className="rightPanel"
+      >
+        <div id="imageBackground" />
       </div>
     </AboutMeWrapper>
   );
