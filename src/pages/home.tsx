@@ -33,7 +33,7 @@ const PositionStore = () => {
 
 const Home: React.FC<any> = () => {
   const positionsStore = PositionStore();
-  const viewportRef: any = React.useRef();
+  const viewportRef: React.MutableRefObject<any> = React.useRef();
 
   const [yPosition, setYposition] = React.useState<number>(0);
 
@@ -54,12 +54,15 @@ const Home: React.FC<any> = () => {
           backgroundImage: `url(https://svgur.com/i/CPw.svg)`,
           backgroundSize: "initial",
           backgroundRepeat: "no-repeat",
+          zIndex: 999,
+          position: "sticky",
+          top: 0,
         }}
         ref={viewportRef}
       >
         <HeaderNavBar yAxis={yPosition} />
       </div>
-      <AboutMe />
+      <AboutMe headerRef={viewportRef} yAxis={yPosition} />
     </AppWrapper>
   );
 };

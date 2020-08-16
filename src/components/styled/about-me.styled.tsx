@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 export const AboutMeWrapper = styled.div`
   display: flex;
-  min-height: 2400px;
   text-align: center;
+  padding: 56px 32px 32px 32px;
+  &.collapsed {
+    /* position: absolute;
+    top: 270px; */
+  }
 `;

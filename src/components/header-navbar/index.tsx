@@ -16,19 +16,19 @@ export const HeaderNavBar: React.FC<HeaderNavBarProps> = ({ yAxis }) => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   React.useEffect(() => {
-    if (yAxis > 180) {
+    console.log(yAxis)
+    if (yAxis > 180 && !isCollapsed) {
+      console.log("gone quite down");
       setIsCollapsed(true);
     }
-    if (yAxis < 180 && isCollapsed) {
-      setTimeout(() => {
-        setIsCollapsed(false);
-      }, 100);
+    if (yAxis === 0 && isCollapsed) {
+      setIsCollapsed(false);
     }
   }, [yAxis]);
 
   const getLinearGradient = () => {
-    return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 30%),
-    rgb(205 200 251 / 60%))`;
+    return `linear-gradient(-${getGradient(yAxis)}deg, rgb(49 24 250 / 95%),
+    rgb(205 200 251 / 90%))`;
   };
 
   const getGradient = (y: number) => {

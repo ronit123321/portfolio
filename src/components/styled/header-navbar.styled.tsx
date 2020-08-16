@@ -5,13 +5,11 @@ export const HeaderNavWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   color: white;
-  transition: all 0.5s linear-out;
+  transition: all 1s linear;
   &.unset {
     justify-content: center;
   }
   &.collapsed {
-    position: fixed;
-    top: 0;
     width: 100%;
   }
 `;
